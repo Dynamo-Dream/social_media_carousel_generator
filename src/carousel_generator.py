@@ -3,6 +3,13 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import textwrap
 import os
 
+font_path = os.path.join(
+    os.path.dirname(__file__), "../Clearface/clearface_serial-bolditalic.otf"
+)
+font_path2 = os.path.join(
+    os.path.dirname(__file__), "../Clearface/clearface_serial-regular.otf"
+)
+
 
 class CarouselGenerator:
     def __init__(self, width=1080, height=1920):
@@ -22,15 +29,9 @@ class CarouselGenerator:
     def load_fonts(self):
         """Load fonts with fallbacks"""
         try:
-            self.title_font = ImageFont.truetype(
-                "Clearface\clearface_serial-bolditalic.otf", 72
-            )
-            self.point_font = ImageFont.truetype(
-                "Clearface\clearface_serial-regular.otf", 38
-            )
-            self.number_font = ImageFont.truetype(
-                "Clearface\clearface_serial-regular.otf", 34
-            )
+            self.title_font = ImageFont.truetype(font_path, 72)
+            self.point_font = ImageFont.truetype(font_path2, 38)
+            self.number_font = ImageFont.truetype(font_path2, 34)
         except:
             try:
                 self.title_font = ImageFont.truetype(
